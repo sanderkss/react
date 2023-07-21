@@ -9,12 +9,10 @@
     height: 70px;
     background-color: white;
     transition: 0.45s;
-   
 }
 .page__input {
     width: 950px;
     height: 60px;
-    
 }
 .page__button {
     background-image: url(img/search_btn.png);

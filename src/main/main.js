@@ -14,14 +14,9 @@ const  main = () =>  {
                 нужно - <b>Spring имеет модульную конструкцию</b>
             </div>         
             <Content/>
-
         </div>
     </div>
-
 </main>
-
-
-
     )
 }
 

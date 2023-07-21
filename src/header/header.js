@@ -2,6 +2,7 @@ import './header.css';
 import React from 'react';
 import Nav from '../nav/nav';
 
+
 const  header = () =>  {
     return (<header className="header">
     <div className="header__container _container">
@@ -10,9 +11,7 @@ const  header = () =>  {
        <a href="" className="header__logo"></a>
        <Nav />
    </div>
-</header>
-
-        
+</header>        
     )
 }
 

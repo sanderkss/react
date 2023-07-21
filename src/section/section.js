@@ -10,18 +10,7 @@ const  section = (props) =>  {
     <h2 className="container__title">{props.title}</h2>
     <div className="container__text">{props.text}</div>
 </div>
-
-
-
-
-
-
-
-
     )
 }
-
-
-
 
 export default section;

@@ -3,7 +3,6 @@ import React from 'react';
 import Section from '../section/section';
 
 
-
 const  content = (props) =>  {
     return (<div className="section__content">
               <Section title="SPRING BOOT" name="icon__logo__1" text ="Takes an opinionated 
@@ -24,5 +23,4 @@ const  content = (props) =>  {
             </div>
     )
 }
-
 export default content;

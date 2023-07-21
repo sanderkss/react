@@ -3,7 +3,7 @@
 }
 
 .input__search{
-  display: none;
+   display: none;
 }
 
 .input__button{
@@ -29,7 +29,6 @@
     height: 80px;
     align-items: center;
     justify-content: center;
-    
 }
 
 .menu__item:hover {
@@ -42,7 +41,6 @@
     color: white;
     font-weight: bold;
     font-size: 16px;
-    
 }
 
 .menu__link__home{
@@ -94,8 +92,6 @@
     .menu__list{
         display: flex;  
         flex-direction: column;
-       
-
     }
 
     .menu__item{
@@ -109,11 +105,11 @@
     }
 
     .menu__link__home{
-            display: block;
-            font-size: 13px;
-            font-weight: 300;
-            line-height: 15px;
-            color: #dddddd;   
+        display: block;
+        font-size: 13px;
+         font-weight: 300;
+        line-height: 15px;
+        color: #dddddd;   
     }
 
     .menu__link{
@@ -174,11 +170,11 @@
     }
 
     .menu__link__home{
-            display: block;
-            font-size: 13px;
-            font-weight: 300;
-            line-height: 15px;
-            color: #dddddd;
+        display: block;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 15px;
+        color: #dddddd;
     }
 
     .menu__link{
@@ -190,6 +186,4 @@
     .menu__item:last-child{
         border-bottom: none;
     }
-
-
 }
