@@ -1,7 +1,16 @@
 import "./nav.css";
-import React from "react";
+import React, { useState } from "react";
+import Navbar from "../navbar/navbar";
 
-const nav = () => {
+const Nav = () => {
+  const [link, setLink] = useState([
+    { class: "menu__link__home", name: "HOME" },
+    { class: "menu__link", name: "HOME" },
+    { class: "menu__link", name: "PROJECT" },
+    { class: "menu__link", name: "GUIDES" },
+    { class: "menu__link", name: "BLOG" },
+    { class: "menu__link", name: "TRAINING&CERTIFICATION" },
+  ]);
   return (
     <nav className="header__menu menu">
       <div className="input__drop">
@@ -9,31 +18,9 @@ const nav = () => {
         <button className="input__button"></button>
       </div>
       <ul className="menu__list">
-        <li className="menu__item">
-          <a href="" className="menu__link__home">
-            HOME
-          </a>
-        </li>
-        <li className="menu__item">
-          <a href="" className="menu__link">
-            PROJECT
-          </a>
-        </li>
-        <li className="menu__item">
-          <a href="" className="menu__link">
-            GUIDES
-          </a>
-        </li>
-        <li className="menu__item">
-          <a href="" className="menu__link">
-            BLOG
-          </a>
-        </li>
-        <li className="menu__item">
-          <a href="" className="menu__link">
-            TRAINING&CERTIFICATION
-          </a>
-        </li>
+        {link.map((child, index) => {
+          return <Navbar key={index} class={child.class} name={child.name} />;
+        })}
         <li className="menu__item">
           <button className="menu__link__search"></button>
         </li>
@@ -42,4 +29,4 @@ const nav = () => {
   );
 };
 
-export default nav;
+export default Nav;
