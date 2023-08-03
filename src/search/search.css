@@ -10,6 +10,11 @@
   background-color: white;
   transition: 0.45s;
 }
+
+.page__search.active {
+  top: 80px;
+}
+
 .page__input {
   width: 950px;
   height: 60px;

@@ -1,15 +1,34 @@
 import "./App.css";
+import React, { useState } from "react";
 import Header from "./header/header";
 import Search from "./search/search";
 import Main from "./main/main";
 
+export const Valueup = React.createContext();
+
 function App() {
+  const [searchValue, setSearchValue] = useState("");
+  function setDefault(value) {
+    setSearchValue(value);
+  }
+  const [clickValue, setClickValue] = useState(false);
+
   return (
-    <div className="App">
-      <Header />
-      <Search />
-      <Main />
-    </div>
+    <Valueup.Provider value={searchValue}>
+      <div className="App">
+        <Header
+          setClickValue={setClickValue}
+          clickValue={clickValue}
+          setDefault={setDefault}
+        />
+        <Search
+          setClickValue={setClickValue}
+          clickValue={clickValue}
+          setDefault={setDefault}
+        />
+        <Main />
+      </div>
+    </Valueup.Provider>
   );
 }
 

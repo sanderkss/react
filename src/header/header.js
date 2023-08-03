@@ -1,18 +1,29 @@
 import "./header.css";
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../nav/nav";
 
-const header = () => {
+const Header = (props) => {
+  const [menuActive, setMenuActive] = useState(false);
+
   return (
     <header className="header">
       <div className="header__container _container">
-        <button className="menu__burger"></button>
+        <button
+          className="menu__burger"
+          onClick={() => setMenuActive(!menuActive)}
+        ></button>
         <a href="" className="mobile__logo"></a>
         <a href="" className="header__logo"></a>
-        <Nav />
+        <Nav
+          active={menuActive}
+          setActive={setMenuActive}
+          setDefault={props.setDefault}
+          setClickValue={props.setClickValue}
+          clickValue={props.clickValue}
+        />
       </div>
     </header>
   );
 };
 
-export default header;
+export default Header;

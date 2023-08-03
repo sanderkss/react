@@ -1,9 +1,10 @@
 import "./content.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Section from "../section/section";
-
+import { Valueup } from "../App";
 
 const Content = (props) => {
+  const searchValue = useContext(Valueup);
   const [cont, setCont] = useState([
     {
       id: 1,
@@ -42,9 +43,12 @@ const Content = (props) => {
       text: "Supports the well-known Enterprise Integration Patterns via lightweight messaging and declarative adapters.",
     },
   ]);
+  const filtredSection = cont.filter((section) => {
+    return section.title.toLowerCase().includes(searchValue.toLowerCase());
+  });
   return (
     <div className="section__content">
-      {cont.map((child, index) => {
+      {filtredSection.map((child, index) => {
         return (
           <Section
             key={index}
