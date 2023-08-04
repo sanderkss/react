@@ -8,9 +8,13 @@ export const Valueup = React.createContext();
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
+
+  // setDefault плохое название 
   function setDefault(value) {
     setSearchValue(value);
   }
+  
+  //searchIsActive, setSearchIsActive лучше так
   const [clickValue, setClickValue] = useState(false);
 
   return (

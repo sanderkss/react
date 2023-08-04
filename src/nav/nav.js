@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Navbar from "../navbar/navbar";
 
 const Nav = ({ active, setDefault, clickValue, setClickValue }) => {
+  //Тут стэйт вообще не нужен, это просто константы неизменные, вынести вверх за компонент
   const [link, setLink] = useState([
     { class: "menu__link__home", name: "HOME" },
     { class: "menu__link", name: "PROJECT" },
@@ -23,6 +24,7 @@ const Nav = ({ active, setDefault, clickValue, setClickValue }) => {
       </div>
       <ul className="menu__list">
         {link.map((child, index) => {
+          //Navbar хуевое название NavLink или что то подобное
           return <Navbar key={index} class={child.class} name={child.name} />;
         })}
         <li className="menu__item">

@@ -1,6 +1,8 @@
 import "./section.css";
 import React from "react";
 
+
+// Поменять по всему проекту - компоненты с большой буквы! название файлов с компонентами тоже с большой как и css
 const section = (props) => {
   return (
     <div className="container__section">
