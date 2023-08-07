@@ -1,6 +1,7 @@
 .container__section {
+  position: relative;
   display: flex;
-  height: 340px;
+  height: 370px;
   border: 1px solid #dddddd;
   flex-direction: column;
   width: 29%;
@@ -10,46 +11,21 @@
   padding: 25px;
 }
 
-.container__logo {
-  height: 137px;
+.change {
+  position: absolute;
   display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+}
+
+.container__logo {
+  min-height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-top: 5px;
-}
-.icon__logo__1 {
-  background-image: url(img/1.png);
-  width: 102px;
-  height: 92px;
-}
-
-.icon__logo__2 {
-  background-image: url(img/2.png);
-  width: 140px;
-  height: 140px;
-}
-
-.icon__logo__3 {
-  background-image: url(img/3.png);
-  width: 132px;
-  height: 87px;
-}
-
-.icon__logo__4 {
-  background-image: url(img/4.png);
-  width: 148px;
-  height: 99px;
-}
-
-.icon__logo__5 {
-  background-image: url(img/5.png);
-  width: 113px;
-  height: 113px;
-}
-
-.icon__logo__6 {
-  background-image: url(img/6.png);
-  width: 147px;
-  height: 102px;
 }
 
 .container__title {
@@ -71,6 +47,39 @@
   font-weight: 400;
   margin: 0px 0px 20px 0px;
   width: 100%;
+}
+
+.delete__icon {
+  cursor: pointer;
+}
+
+.edit__icon {
+  cursor: pointer;
+}
+
+.file-uploader__uploadbutton {
+  display: none;
+}
+
+.file-uploader__uploadbutton.active {
+  display: block;
+}
+
+.edit__text {
+  display: none;
+}
+
+.edit__text.active {
+  display: block;
+  width: 260px;
+}
+
+.edit__title {
+  display: none;
+}
+
+.edit__title.active {
+  display: block;
 }
 
 @media screen and (max-width: 1000px) and (min-width: 600px) {

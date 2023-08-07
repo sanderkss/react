@@ -1,13 +1,13 @@
-import "./search.css";
+import "./Search.css";
 import React from "react";
 
-const Search = (props) => {
+const Search = ({setDefault,searchIsActive}) => {
   return (
-    <div className={props.clickValue ? "page__search active" : "page__search"}>
+    <div className={searchIsActive ? "page__search active" : "page__search"}>
       <input
         type="text"
         className="page__input"
-        onChange={(event) => props.setDefault(event.target.value)}
+        onChange={(event) => setDefault(event.target.value)}
       />
       <button className="page__button"></button>
     </div>

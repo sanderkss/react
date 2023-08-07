@@ -1,8 +1,8 @@
-import "./main.css";
+import "./Main.css";
 import React from "react";
-import Content from "../content/content";
+import Content from "../content/Content";
 
-const main = () => {
+const Main = () => {
   return (
     <main className="page">
       <div className="page__main-block main-block">
@@ -22,4 +22,4 @@ const main = () => {
   );
 };
 
-export default main;
+export default Main;

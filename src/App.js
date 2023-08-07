@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
-import Header from "./header/header";
-import Search from "./search/search";
-import Main from "./main/main";
+import Header from "./header/Header";
+import Search from "./search/Search";
+import Main from "./main/Main";
 
 export const Valueup = React.createContext();
 
@@ -11,19 +11,19 @@ function App() {
   function setDefault(value) {
     setSearchValue(value);
   }
-  const [clickValue, setClickValue] = useState(false);
+  const [searchIsActive, setSearchIsActive] = useState(false);
 
   return (
     <Valueup.Provider value={searchValue}>
       <div className="App">
         <Header
-          setClickValue={setClickValue}
-          clickValue={clickValue}
+          setSearchIsActive={setSearchIsActive}
+          searchIsActive={searchIsActive}
           setDefault={setDefault}
         />
         <Search
-          setClickValue={setClickValue}
-          clickValue={clickValue}
+          setSearchIsActive={setSearchIsActive}
+          searchIsActive={searchIsActive}
           setDefault={setDefault}
         />
         <Main />

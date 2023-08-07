@@ -4,6 +4,12 @@
   flex: 1 1 auto;
 }
 
+.page__main-block{
+  min-height: 880px;
+  background-color: #f1f1f1;
+}
+
+
 .main-block__tittle {
   margin-top: 179px;
   font-weight: bold;

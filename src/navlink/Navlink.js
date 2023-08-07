@@ -1,7 +1,7 @@
-import "./navbar.css";
+import "./Navlink.css";
 import React from "react";
 
-const navbar = (props) => {
+const Navlink = (props) => {
   return (
     <li className="menu__item">
       <a className={props.class}>{props.name}</a>
@@ -9,4 +9,4 @@ const navbar = (props) => {
   );
 };
 
-export default navbar;
+export default Navlink;

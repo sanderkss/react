@@ -1,8 +1,8 @@
-import "./header.css";
+import "./Header.css";
 import React, { useState } from "react";
-import Nav from "../nav/nav";
+import Nav from "../nav/Nav";
 
-const Header = (props) => {
+const Header = ({setDefault,setSearchIsActive,searchIsActive}) => {
   const [menuActive, setMenuActive] = useState(false);
 
   return (
@@ -12,14 +12,14 @@ const Header = (props) => {
           className="menu__burger"
           onClick={() => setMenuActive(!menuActive)}
         ></button>
-        <a href="" className="mobile__logo"></a>
-        <a href="" className="header__logo"></a>
+        <a href="!#" className="mobile__logo"></a>
+        <a href="!#" className="header__logo"></a>
         <Nav
           active={menuActive}
           setActive={setMenuActive}
-          setDefault={props.setDefault}
-          setClickValue={props.setClickValue}
-          clickValue={props.clickValue}
+          setDefault={setDefault}
+          setSearchIsActive={setSearchIsActive}
+          searchIsActive={searchIsActive}
         />
       </div>
     </header>
