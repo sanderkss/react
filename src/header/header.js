@@ -1,5 +1,6 @@
 import "./Header.css";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Nav from "../nav/Nav";
 
 const Header = ({setDefault,setSearchIsActive,searchIsActive}) => {
@@ -12,8 +13,8 @@ const Header = ({setDefault,setSearchIsActive,searchIsActive}) => {
           className="menu__burger"
           onClick={() => setMenuActive(!menuActive)}
         ></button>
-        <a href="!#" className="mobile__logo"></a>
-        <a href="!#" className="header__logo"></a>
+        <NavLink to="/" className="mobile__logo"></NavLink>
+        <NavLink to="/" className="header__logo"></NavLink>
         <Nav
           active={menuActive}
           setActive={setMenuActive}

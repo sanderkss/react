@@ -1,0 +1,19 @@
+.page {
+  min-height: 100%;
+  background-color: #f1f1f1;
+  flex: 1 1 auto;
+}
+
+.page-block {
+  min-height: 880px;
+  background-color: #f1f1f1;
+}
+
+._container {
+  max-width: 1000px;
+  margin: 0px auto;
+}
+
+h1 {
+  margin: 200px 0px 30px 0px;
+}

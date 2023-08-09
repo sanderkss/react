@@ -1,15 +1,17 @@
 import "./App.css";
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./header/Header";
 import Search from "./search/Search";
 import Main from "./main/Main";
+import Login from "./login/Login";
+import Blog from "./blog/Blog";
 
 export const Valueup = React.createContext();
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
 
-  // setDefault плохое название 
   function setDefault(value) {
     setSearchValue(value);
   }
@@ -23,12 +25,18 @@ function App() {
           searchIsActive={searchIsActive}
           setDefault={setDefault}
         />
+
         <Search
           setSearchIsActive={setSearchIsActive}
           searchIsActive={searchIsActive}
           setDefault={setDefault}
         />
-        <Main />
+
+        <Routes>
+          <Route path="/blog" exact element={<Blog />} />
+          <Route path="/" exact element={<Login />} />
+          <Route path="/main" exact element={<Main />} />
+        </Routes>
       </div>
     </Valueup.Provider>
   );

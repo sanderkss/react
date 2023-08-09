@@ -1,6 +1,7 @@
 import "./Nav.css";
 import React from "react";
-import Navlink from "../navlink/Navlink";
+import { NavLink } from "react-router-dom";
+import Navl from "../navlink/Navl";
 
 const Nav = ({ active, setDefault, searchIsActive, setSearchIsActive }) => {
   const link = [
@@ -8,7 +9,7 @@ const Nav = ({ active, setDefault, searchIsActive, setSearchIsActive }) => {
     { class: "menu__link", name: "PROJECT" },
     { class: "menu__link", name: "GUIDES" },
     { class: "menu__link", name: "BLOG" },
-    { class: "menu__link", name: "TRAINING&CERTIFICATION" },
+    { class: "menu__link", name: "TRAINING&CERTIFICATION" }
   ]
 
   return (
@@ -23,13 +24,16 @@ const Nav = ({ active, setDefault, searchIsActive, setSearchIsActive }) => {
       </div>
       <ul className="menu__list">
         {link.map((child, index) => {
-          return <Navlink key={index} class={child.class} name={child.name} />;
+          return <Navl key={index} class={child.class} name={child.name} />;
         })}
         <li className="menu__item">
           <button
             className="menu__link__search"
             onClick={() => setSearchIsActive(!searchIsActive)}
           ></button>
+        </li>
+        <li className="menu__item">
+          <NavLink to="/" className="menu__link">LOG IN</NavLink>
         </li>
       </ul>
     </nav>
