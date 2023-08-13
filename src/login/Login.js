@@ -2,15 +2,15 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = (props) => {
-  const logState = [
-    { login: "sanderkss", password: "123" },
-    { login: "melnik", password: "areyoulikerita?" },
-  ];
-  let history = useNavigate();
+const logState = [
+  { login: "sanderkss", password: "123" },
+  { login: "melnik", password: "areyoulikerita?" },
+];
+
+const Login = () => {
+  const history = useNavigate();
   const logRef = useRef();
   const passRef = useRef();
-
   const sendData = () => {
     console.log(logRef);
     let isSuccess = false;
@@ -27,7 +27,6 @@ const Login = (props) => {
     } else {
       alert("Navigation error");
     }
-    // };
   };
 
   return (

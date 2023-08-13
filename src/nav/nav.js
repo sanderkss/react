@@ -5,11 +5,11 @@ import Navl from "../navlink/Navl";
 
 const Nav = ({ active, setDefault, searchIsActive, setSearchIsActive }) => {
   const link = [
-    { class: "menu__link__home", name: "HOME" },
-    { class: "menu__link", name: "PROJECT" },
-    { class: "menu__link", name: "GUIDES" },
-    { class: "menu__link", name: "BLOG" },
-    { class: "menu__link", name: "TRAINING&CERTIFICATION" }
+    { classN: "menu__link__home", name: "HOME" },
+    { classN: "menu__link", name: "PROJECT" },
+    { classN: "menu__link", name: "GUIDES" },
+    { classN: "menu__link", name: "BLOG" },
+    { classN: "menu__link", name: "TRAINING&CERTIFICATION" }
   ]
 
   return (
@@ -23,8 +23,8 @@ const Nav = ({ active, setDefault, searchIsActive, setSearchIsActive }) => {
         <button className="input__button"></button>
       </div>
       <ul className="menu__list">
-        {link.map((child, index) => {
-          return <Navl key={index} class={child.class} name={child.name} />;
+        {link.map((item, index) => {  
+          return <Navl key={index} classN={item.classN} name={item.name} />;
         })}
         <li className="menu__item">
           <button
