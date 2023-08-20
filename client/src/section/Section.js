@@ -2,29 +2,34 @@ import "./Section.css";
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import axios from "axios";
+
+const hostURL = "http://localhost:3000/upload";
 
 const Section = (props) => {
-
+  const [uploaded, setUploaded] = useState();
   const [imageURL, setimageURL] = useState();
   const fileReader = new FileReader();
   fileReader.onloadend = () => {
     setimageURL(fileReader.result);
-    // axios
-    // .get(`http://localhost:3000/upload`,fileReader.result)
-    // .then()
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-  };
-  
-  const handleOnchange = (event) => {
+  }
+
+  const handleOnchange = (event) => { 
     event.preventDefault();
     const file = event.target.files[0];
-    fileReader.readAsDataURL(file);
-    
+    fileReader.readAsDataURL(file);    
   };
 
+  const handleLoadImg = async () => {
+    const formData = new FormData();
+    formData.append("file", imageURL);
+    console.log(formData);
+    const res = await fetch(hostURL, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await res.json();
+    setUploaded(data);
+  };
   const [editActive, setEditActive] = useState(false);
 
   return (
@@ -52,6 +57,7 @@ const Section = (props) => {
             type="file"
             onChange={handleOnchange}
           />
+          <button className="btn__loadImg" onClick={handleLoadImg}>upload</button>
         </div>
       </div>
       <h2 className="container__title">{props.title}</h2>
@@ -59,7 +65,7 @@ const Section = (props) => {
         className={editActive ? "edit__title active" : "edit__title"}
         type="text"
         onChange={props.onEditTitle}
-        onBlur = {props.onLoadServer}
+        onBlur={props.onLoadServer}
         value={props.title}
       />
       <div className="container__text">{props.text}</div>
@@ -67,7 +73,7 @@ const Section = (props) => {
         className={editActive ? "edit__text active" : "edit__text"}
         type="text"
         onChange={props.onEditText}
-        onBlur = {props.onLoadServer}
+        onBlur={props.onLoadServer}
         value={props.text}
       />
     </div>

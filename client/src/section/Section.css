@@ -53,6 +53,11 @@
   cursor: pointer;
 }
 
+.btn__loadImg{
+  border: 1px solid #080808;
+  
+}
+
 .edit__icon {
   cursor: pointer;
 }

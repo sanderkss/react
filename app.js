@@ -36,4 +36,16 @@ app.patch("/", (req, res) => {
   );
 });
 
+
+app.post('/upload', (req,res) => {
+  console.log(req.body)
+const file = req.files.file;
+const newFileName = encodeURI(Date.now() + "-" + file.name)
+file.mv(`${__dirname}/img/${newFileName}`, err =>{
+  if(err){
+    console.log(err)
+  } res.send("file is upload")
+})
+})
+
 app.listen(PORT);
