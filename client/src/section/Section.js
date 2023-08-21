@@ -2,6 +2,7 @@ import "./Section.css";
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import axios from "axios"
 
 const hostURL = "http://localhost:3000/upload";
 
@@ -23,12 +24,13 @@ const Section = (props) => {
     const formData = new FormData();
     formData.append("file", imageURL);
     console.log(formData);
-    const res = await fetch(hostURL, {
+    await fetch(hostURL, {
       method: "POST",
       body: formData,
     });
-    const data = await res.json();
-    setUploaded(data);
+    
+    // const data = await res.json();
+    // setUploaded(data);
   };
   const [editActive, setEditActive] = useState(false);
 
@@ -52,12 +54,15 @@ const Section = (props) => {
               : "file-uploader__uploadbutton"
           }
         >
+           <form action="http://localhost:3000/upload" method="post" encType="multipart/form-data">
           <input
             id="file-loader-button"
             type="file"
             onChange={handleOnchange}
+            name="file"
           />
           <button className="btn__loadImg" onClick={handleLoadImg}>upload</button>
+          </form>
         </div>
       </div>
       <h2 className="container__title">{props.title}</h2>
