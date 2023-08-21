@@ -12,11 +12,11 @@ const multer = require('multer');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname));
 app.use(multer({dest:"img"}).single("file"));
-
-const upload = multer({
-  dest: path.join(__dirname, 'img')
-});
+// const upload = multer({
+//   dest: path.join(__dirname, 'img')
+// });
 
 app.get("/", function (req, res) {
   res.json(arrContent);
@@ -44,18 +44,17 @@ app.patch("/", (req, res) => {
 });
 
 
-app.post('/upload',(req, res, next) => {
-   
-    let filedata = req.file;
-    console.log(filedata);
-    if(!filedata)
+app.post('/upload', (req, res, next) => {
+    let file = req.body.file;
+    console.log("file",file);
+    if(!file)
         res.send("Ошибка при загрузке файла");
     else
         res.send("Файл загружен");
 
-//   console.log(req.file)
-// const file = req.files.file;
-// const newFileName = encodeURI(Date.now() + "-" + file.name)
+//   console.log(req.body.file)
+// const file = req.body.file;
+// // const newFileName = encodeURI(Date.now() + "-" + file.name)
 // file.mv(`${__dirname}/img/${newFileName}`, function (error) {
 //   if (error) throw error;
 //   console.log("все сделано");
