@@ -65,6 +65,7 @@ const Content = (props) => {
             title={item.title}
             name={item.name}
             text={item.text}
+            index={index}
             onDelete={deleteHandler}
             onLoadServer={(event)=>onLoadServer(event,index)}
             onEditTitle={(event) => onEditTitle(event.target.value, index)}
