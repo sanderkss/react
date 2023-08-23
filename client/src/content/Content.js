@@ -4,7 +4,7 @@ import Section from "../section/Section";
 import { Valueup } from "../App";
 import axios from "axios";
 
-const Content = (props) => {
+const Content = () => {
   const searchValue = useContext(Valueup);
   const [cont, setCont] = useState([]);
 
@@ -12,7 +12,6 @@ const Content = (props) => {
     axios
       .get("http://localhost:3000/")
       .then((data) => {
-        console.log(data.data.map(item => item.name))
         setCont(data.data);
       })
       .catch((error) => {
@@ -26,16 +25,7 @@ const Content = (props) => {
     setCont(sector);
   };
 
-  const onEditTitle = (name, index) => {
-    console.log(name, index);
-    const titl = cont[index];
-    titl.title = name;
-    const edit = [...cont];
-    edit[index] = titl;
-    setCont(edit);
-  };
-
-  const onLoadServer = (namem, index) => {
+  const onLoadServer = (index) => {
     axios
       .patch(`http://localhost:3000/`, cont[index])
       .then()
@@ -44,10 +34,9 @@ const Content = (props) => {
       });
   };
 
-  const onEditText = (name, index) => {
-    console.log(name, index);
+  const onEditTxt = ( name, index, prop) => {
     const textl = cont[index];
-    textl.text = name;
+    textl[prop] = name;
     const editT = [...cont];
     editT[index] = textl;
     setCont(editT);
@@ -66,10 +55,9 @@ const Content = (props) => {
             name={item.name}
             text={item.text}
             index={index}
-            onDelete={deleteHandler}
-            onLoadServer={(event)=>onLoadServer(event,index)}
-            onEditTitle={(event) => onEditTitle(event.target.value, index)}
-            onEditText={(event) => onEditText(event.target.value, index)}
+            onDelete={() => deleteHandler(index)}
+            onLoadServer={()=>onLoadServer(index)}
+            onEditTxt={(event, format) => onEditTxt(event.target.value, index, format)}
           />
         );
       })}

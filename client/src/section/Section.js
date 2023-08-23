@@ -63,7 +63,7 @@ const Section = (props) => {
       <input
         className={editActive ? "edit__title active" : "edit__title"}
         type="text"
-        onChange={props.onEditTitle}
+        onChange={(event) => props.onEditTxt(event, "title")}
         onBlur={props.onLoadServer}
         value={props.title}
       />
@@ -71,7 +71,7 @@ const Section = (props) => {
       <input
         className={editActive ? "edit__text active" : "edit__text"}
         type="text"
-        onChange={props.onEditText}
+        onChange={(event) => props.onEditTxt(event, "text")}
         onBlur={props.onLoadServer}
         value={props.text}
       />
