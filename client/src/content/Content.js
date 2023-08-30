@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Section from "../section/Section";
 import { Valueup } from "../App";
 import axios from "axios";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 const Content = () => {
   const searchValue = useContext(Valueup);
@@ -19,10 +20,30 @@ const Content = () => {
       });
   }, []);
 
+  const makeNewSection = () =>{
+    const id = cont[cont.length-1]["id"]+1;
+    axios
+      .post("http://localhost:3000/create",{id, title:" ", text: " "} )
+      .then((resp) => {
+        setCont(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   const deleteHandler = (index) => {
     const sector = cont.concat();
-    sector.splice(index, 1);
-    setCont(sector);
+    const del = sector.splice(index, 1);
+    axios
+      .patch("http://localhost:3000/delete", del)
+      .then((resp) => {
+        setCont(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    //я должен передавать del на сервер и получать айди, по которому буду удалять этот объект
   };
 
   const onLoadServer = (index) => {
@@ -34,7 +55,7 @@ const Content = () => {
       });
   };
 
-  const onEditTxt = ( name, index, prop) => {
+  const onEditTxt = (name, index, prop) => {
     const textl = cont[index];
     textl[prop] = name;
     const editT = [...cont];
@@ -56,11 +77,19 @@ const Content = () => {
             text={item.text}
             index={index}
             onDelete={() => deleteHandler(index)}
-            onLoadServer={()=>onLoadServer(index)}
-            onEditTxt={(event, format) => onEditTxt(event.target.value, index, format)}
+            onLoadServer={() => onLoadServer(index)}
+            onEditTxt={(event, format) =>
+              onEditTxt(event.target.value, index, format)
+            }
           />
         );
       })}
+      <div className="container__section">
+        <AddCircleOutlineIcon
+          style={{ fontSize: "4rem", cursor: "pointer" }}
+          onClick={makeNewSection}
+        />
+      </div>
     </div>
   );
 };

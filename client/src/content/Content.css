@@ -4,3 +4,17 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.container__section {
+  position: relative;
+  display: flex;
+  height: 370px;
+  border: 1px solid #dddddd;
+  flex-direction: column;
+  width: 29%;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  padding: 25px;
+}
+

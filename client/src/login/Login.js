@@ -1,23 +1,31 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const logState = [
-  { login: "sanderkss", password: "123" },
-  { login: "melnik", password: "areyoulikerita?" },
-];
-
 const Login = () => {
+  const [mongo, setMongo] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/users")
+      .then((data) => {
+        setMongo(data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  
   const history = useNavigate();
   const logRef = useRef();
   const passRef = useRef();
   const sendData = () => {
-    console.log(logRef);
     let isSuccess = false;
-    for (let i = 0; i < logState.length; i++) {
+    for (let i = 0; i < mongo.length; i++) {
       if (
-        logRef.current.value === logState[i].login &&
-        passRef.current.value === logState[i].password
+        logRef.current.value === mongo[i].login &&
+        String(passRef.current.value) === mongo[i].password
       ) {
         isSuccess = true;
       }
