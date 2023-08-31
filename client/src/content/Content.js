@@ -21,9 +21,8 @@ const Content = () => {
   }, []);
 
   const makeNewSection = () =>{
-    const id = cont[cont.length-1]["id"]+1;
     axios
-      .post("http://localhost:3000/create",{id, title:" ", text: " "} )
+      .post("http://localhost:3000/create")
       .then((resp) => {
         setCont(resp.data);
       })
@@ -35,15 +34,15 @@ const Content = () => {
   const deleteHandler = (index) => {
     const sector = cont.concat();
     const del = sector.splice(index, 1);
+    const idMDB = del[0]["_id"]
     axios
-      .patch("http://localhost:3000/delete", del)
+      .delete(`http://localhost:3000/${idMDB}`)
       .then((resp) => {
         setCont(resp.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    //я должен передавать del на сервер и получать айди, по которому буду удалять этот объект
   };
 
   const onLoadServer = (index) => {

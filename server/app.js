@@ -15,8 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
-  Section
-    .find()
+  Section.find()
     .then((result) => {
       res.send(result);
     })
@@ -26,49 +25,54 @@ app.get("/", function (req, res) {
     });
 });
 
-app.patch("/delete", (req, res) => {
-  const recordId = req.body[0]['_id'];
-  Section.findByIdAndRemove(recordId)
-  .then(() => {Section.find()
-    .then((data) => {
-      console.log(data)
-      res.json(data);
+app.delete("/:id", (req, res) => {
+  idD = req.params.id
+  Section.findByIdAndRemove(idD)
+    .then(() => {
+      Section.find()
+        .then((data) => {
+          res.json(data);
+        })
+        .catch((error) => {
+          res.status(500).json({ error: error.message });
+        });
     })
     .catch((error) => {
       res.status(500).json({ error: error.message });
     });
-})
-.catch((error) => {
-  res.status(500).json({ error: error.message });
-});
 });
 
-app.post("/create", (req, res) => {
-  Section.create(req.body)
-  .then(() => {Section.find()
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((error) => {
-      res.status(500).json({ error: error.message });
-    });
-})
-.catch((error) => {
-  res.status(500).json({ error: error.message });
-});
-});
-
-
-app.patch("/", async(req, res) => {
-  const recordId = req.body['_id'];
-  await Section.findByIdAndUpdate(recordId, req.body, { new: true })
-  .then((updatedData) => {
-    console.log(updatedData)
-    res.json(updatedData);
-  })
-  .catch((error) => {
-    res.status(500).json({ error: error.message });
+app.post("/create", async (req, res) => {
+  let fieldForm;
+  await Section.find().then((data) => {
+    let id = data[data.length - 1]["id"] + 1;
+    fieldForm = { id: id, title: " ", name: " ", text: " " };
+    return fieldForm;
   });
+  await Section.create(fieldForm)
+    .then(() => {
+      Section.find()
+        .then((data) => {
+          res.json(data);
+        })
+        .catch((error) => {
+          res.status(500).json({ error: error.message });
+        });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
+});
+
+app.patch("/", async (req, res) => {
+  const recordId = req.body["_id"];
+  await Section.findByIdAndUpdate(recordId, req.body, { new: true })
+    .then((updatedData) => {
+      res.json(updatedData);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
 });
 
 app.patch("/upload", (req, res) => {
