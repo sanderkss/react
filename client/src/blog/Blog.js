@@ -8,7 +8,7 @@ const Blog = () => {
       <div className="page-block _container">
         <h1>HELLO, It's me</h1>
         <div>
-          <img src={Photo}></img>
+          <img src={Photo}  alt="spring icon"></img>
         </div>
       </div>
     </div>

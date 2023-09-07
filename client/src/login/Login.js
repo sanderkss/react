@@ -1,40 +1,33 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
-  const [mongo, setMongo] = useState([]);
+  // const [token, setToken] = useState("");
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/users")
-      .then((data) => {
-        setMongo(data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  
   const history = useNavigate();
   const logRef = useRef();
   const passRef = useRef();
   const sendData = () => {
-    let isSuccess = false;
-    for (let i = 0; i < mongo.length; i++) {
-      if (
-        logRef.current.value === mongo[i].login &&
-        String(passRef.current.value) === mongo[i].password
-      ) {
-        isSuccess = true;
-      }
-    }
-    if (isSuccess) {
-      history("/main");
-    } else {
-      alert("Navigation error");
-    }
+    const login = logRef.current.value;
+    const password = passRef.current.value;
+    axios
+      .post("http://localhost:3000/users", { login, password })
+      .then((token) => {
+        if (token.data) {
+          const jwtToken = token.data.token;
+          localStorage.setItem("jwtToken", jwtToken);
+
+          history("/main");
+        } else {
+          alert("Неправильный логин или пароль");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -46,9 +39,12 @@ const Login = () => {
           <h2>Password</h2>
           <input className="login__input" type="text" ref={passRef} />
           <button className="login__button" onClick={sendData}>
-            Send
+            Sign in
           </button>
+          <h3>or</h3>
+        <NavLink className="reg__link" to="/registr">Registration</NavLink>
         </div>
+        
       </div>
     </div>
   );

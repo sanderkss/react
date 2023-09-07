@@ -1,28 +1,11 @@
-.page {
-  min-height: 100%;
-  background-color: #f1f1f1;
-  flex: 1 1 auto;
-}
-
-.page__main-block {
-  min-height: 880px;
-  background-color: #f1f1f1;
-}
-
-._container {
-  max-width: 1000px;
-  margin: 0px auto;
-}
-
-.login__page {
+.reg__page {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 180px 0px;
   padding: 10px;
 }
 
-.login__input {
+.reg__input {
   margin: 10px 0px;
   padding: 15px 0px;
 }
@@ -31,21 +14,16 @@ h2 {
   display: flex;
   justify-content: center;
   font-weight: bold;
-  margin: 10px 0px 0px 0px
+  margin: 10px 0px 0px 0px;
 }
 
-h3{
-  font-weight: bold;
-  margin: 10px 0px 0px 0px
-}
-
-.reg__link{
+.login__link {
   font-weight: bold;
   margin: 5px 0px 0px 0px;
   font-size: 20px;
 }
 
-.login__button {
+.reg__button {
   border: 1px solid #34302d;
   border-radius: 30px;
   height: 50px;
@@ -53,6 +31,6 @@ h3{
   font-size: 21px;
 }
 
-.login__button:hover {
+.reg__button:hover {
   background-color: #6db33f;
 }
